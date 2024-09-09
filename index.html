@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clip path gsap</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing: border-box;
+            }
+            section{
+                height:100vh;
+            }
+            .bg__clip{
+                background-image: url(https://cdn.pixabay.com/photo/2017/11/19/23/25/bmw-2964072_1280.jpg);
+                background-attachment: scroll;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+                /* clip-path: circle(5vw at calc(46% + 10vh) calc(60%)); */
+                clip-path: ellipse(4vw 9vh  at calc(47% + 10vh) calc(60%));
+            }
+        </style>
+    </head>
+    <body>
+        <section></section>
+        <section>
+            <div class="bg__clip"></div>
+        </section>
+        <section></section>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+
+                gsap.to('.bg__clip',{
+                    clipPath:"ellipse(80vw 80vh  at calc(47% + 10vh) calc(60%))",
+                    scrollTrigger:{
+                        trigger:".bg__clip",
+                        ease: "elastic.out(1,0.3)",
+                        scroller:'body',
+                        duration:'4',
+                        scrub:'0.1',
+                        // pin:true,
+                        markers:true,
+                        start:'top 20%',
+                        end:'top -60%'
+                    }
+                })
+        </script>
+    </body>
+</html>
